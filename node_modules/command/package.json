@@ -1,0 +1,40 @@
+{
+  "name": "command",
+  "version": "0.0.4",
+  "description": "A chainable, promise-based utility for running commands with child_process.spawn",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/UmbraEngineering/command"
+  },
+  "keywords": [
+    "command",
+    "cli",
+    "spawn",
+    "child",
+    "process"
+  ],
+  "author": {
+    "name": "James Brumond"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "merge-recursive": "0.0.3",
+    "which": "1.0.5"
+  },
+  "readme": "# command\n\nA Node.js chainable, promise-based utility for running commands with child_process.spawn\n\n## Install\n\n```bash\n$ npm install command\n```\n\n## Usage\n\n```javascript\nvar command = require('command');\n\ncommand.open('/some/directory/path')\n\t.on('stdout', command.writeTo(process.stdout))\n\t.on('stderr', command.writeTo(process.stderr))\n\t.chdir('..')\n\t.exec('ls')\n\t.then(function() {\n\t\tvar stdout = this.lastOutput.stdout;\n\t\tif (! stdout.trim().length) {\n\t\t\tconsole.warn('No files found!');\n\t\t}\n\t});\n```\n\n",
+  "readmeFilename": "readme.md",
+  "bugs": {
+    "url": "https://github.com/UmbraEngineering/command/issues"
+  },
+  "homepage": "https://github.com/UmbraEngineering/command",
+  "_id": "command@0.0.4",
+  "dist": {
+    "shasum": "5029f100269b96bf5b082c1e1b85ef7490a9fac6"
+  },
+  "_from": "command@",
+  "_resolved": "https://registry.npmjs.org/command/-/command-0.0.4.tgz"
+}
