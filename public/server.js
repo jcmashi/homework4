@@ -1,7 +1,8 @@
 // Include http module, 
 var http = require('http'),
-// And mysql module you've just installed. 
-    mysql = require("mysql");
+var url = require("url");
+var mysql = require("mysql");
+var port = process.env.port||1337;
 
 // Create the connection. 
 // Data is default to new mysql installation and should be changed according to your configuration. 
@@ -14,7 +15,8 @@ var connection = mysql.createConnection({
 
 // Create the http server. 
 http.createServer(function (request, response) {
-    // Query the database. 
+	var pathname = url.parse(request.url).pathname;
+    
     connection.query('SELECT * FROM RestaurantVisits;', function (error, rows, fields) {
         response.writeHead(200, {
             'Content-Type': 'text/plain'
@@ -25,6 +27,6 @@ http.createServer(function (request, response) {
         response.end();
     });
 
-// Listen on the 8888 port. 
-}).listen(8888);
+
+}).listen(port);
 console.log("Server running at http://127.0.0.1:8888/");
