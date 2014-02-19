@@ -1,6 +1,6 @@
 // Include http module, 
 var http = require('http'),
-var url = require("url");
+ url = require("url");
 var mysql = require("mysql");
 var port = process.env.port||1337;
 
